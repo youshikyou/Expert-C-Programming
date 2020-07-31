@@ -16,5 +16,20 @@ int main() {
 	printf("apple is %d \n", apple);
 	printf("%d", sizeof(int));
 
+	
+	/*p162, how to correctly free list node*/
+	
+	elemtype *p, *temp, *start;
+	for(p = start;p;p = temp){
+		temp = p->next;
+		free(p);
+	}
+	//if you don't use temperary value, p is free, p=p->next doesn't exist, the result will be unexpected
+	for(p = start;p;p=p->next){
+		free(p);
+	} 
+	
+	
+	
 	return 0;
 }
